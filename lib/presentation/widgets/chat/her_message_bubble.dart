@@ -8,6 +8,7 @@ class HerMessageBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
+   // print(message.imageUrl);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -24,7 +25,9 @@ class HerMessageBubble extends StatelessWidget {
         const SizedBox(
           height: 5,
         ),
-        _ImageBubble(imageUrl: message.imageUrl ?? 'https://pexels.com/imagen_not_found.jpg'),
+        _ImageBubble(
+            imageUrl:
+                message.imageUrl ?? 'https://pexels.com/imagen_not_found.jpg'),
         const SizedBox(
           height: 10,
         ),
@@ -40,7 +43,8 @@ class _ImageBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    print(size);
+    
+    //print(size);
 
     return ClipRRect(
         borderRadius: BorderRadius.circular(20),
@@ -53,12 +57,14 @@ class _ImageBubble extends StatelessWidget {
             if (loadingProgress == null) return child;
 
             return Container(
-              width: size.width * 0.7,
+              width: size.width,
               height: 150,
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-              child: const Text('Mi amor está enviando una imagen...'),
+             
+              child: const Center(child: CircularProgressIndicator()),
             );
           },
         ));
   }
 }
+
